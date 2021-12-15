@@ -1,5 +1,5 @@
 # InceptionTime: Finding AlexNet for Time Series Classification
-This is the companion repository for our paper titled [InceptionTime: Finding AlexNet for Time Series Classification](https://link.springer.com/article/10.1007/s10618-020-00710-y) published in [Data Mining and Knowledge Discovery](https://www.springer.com/journal/10618) and also available on [ArXiv](https://arxiv.org/pdf/1909.04939.pdf). 
+This is just a fork for minor changes. The original repository can be found [here](https://github.com/hfawaz/InceptionTime)
 
 ## Inception module
 ![inception module](https://github.com/hfawaz/InceptionTime/blob/master/pngs/inception-module.png)

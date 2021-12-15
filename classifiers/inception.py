@@ -1,5 +1,5 @@
 # resnet model
-import keras
+from tensorflow import keras
 import numpy as np
 import time
 
@@ -65,7 +65,7 @@ class Classifier_INCEPTION:
     def _shortcut_layer(self, input_tensor, out_tensor):
         shortcut_y = keras.layers.Conv1D(filters=int(out_tensor.shape[-1]), kernel_size=1,
                                          padding='same', use_bias=False)(input_tensor)
-        shortcut_y = keras.layers.normalization.BatchNormalization()(shortcut_y)
+        shortcut_y = keras.layers.BatchNormalization()(shortcut_y)
 
         x = keras.layers.Add()([shortcut_y, out_tensor])
         x = keras.layers.Activation('relu')(x)
@@ -107,9 +107,6 @@ class Classifier_INCEPTION:
         return model
 
     def fit(self, x_train, y_train, x_val, y_val, y_true, plot_test_acc=False):
-        if len(keras.backend.tensorflow_backend._get_available_gpus()) == 0:
-            print('error no gpu')
-            exit()
         # x_val and y_val are only used to monitor the test loss and NOT for training
 
         if self.batch_size is None:
