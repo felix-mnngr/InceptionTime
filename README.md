@@ -1,5 +1,5 @@
 # InceptionTime: Finding AlexNet for Time Series Classification
-This is just a fork for minor changes. The original repository can be found [here](https://github.com/hfawaz/InceptionTime)
+This is just a fork for minor changes. The original repository can be found [here](https://github.com/hfawaz/InceptionTime).
 
 ## Inception module
 ![inception module](https://github.com/hfawaz/InceptionTime/blob/master/pngs/inception-module.png)

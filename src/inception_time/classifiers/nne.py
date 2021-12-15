@@ -1,10 +1,10 @@
 import keras
 import numpy as np
-from utils.utils import calculate_metrics
-from utils.utils import create_directory
-from utils.utils import check_if_file_exits
+from ..utils import calculate_metrics
+from ..utils import create_directory
+from ..utils import check_if_file_exits
 import gc
-from utils.constants import UNIVARIATE_ARCHIVE_NAMES  as ARCHIVE_NAMES
+from ..utils.constants import UNIVARIATE_ARCHIVE_NAMES  as ARCHIVE_NAMES
 import time
 
 
@@ -13,7 +13,7 @@ class Classifier_NNE:
     def create_classifier(self, model_name, input_shape, nb_classes, output_directory, verbose=False,
                           build=True):
         if self.check_if_match('inception*', model_name):
-            from classifiers import inception
+            from src.inception_time.classifiers import inception
             return inception.Classifier_INCEPTION(output_directory, input_shape, nb_classes, verbose,
                                                   build=build)
 

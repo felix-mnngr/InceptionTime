@@ -1,12 +1,11 @@
-from utils.constants import UNIVARIATE_ARCHIVE_NAMES as ARCHIVE_NAMES
+from src.inception_time.utils.constants import UNIVARIATE_ARCHIVE_NAMES as ARCHIVE_NAMES
 
-from utils.utils import read_all_datasets
-from utils.utils import transform_labels
-from utils.utils import create_directory
-from utils.utils import run_length_xps
-from utils.utils import generate_results_csv
+from src.inception_time.utils import read_all_datasets
+from src.inception_time.utils import transform_labels
+from src.inception_time.utils import create_directory
+from src.inception_time.utils import run_length_xps
+from src.inception_time.utils import generate_results_csv
 
-import utils
 import numpy as np
 import sys
 import sklearn
@@ -52,11 +51,11 @@ def fit_classifier():
 def create_classifier(classifier_name, input_shape, nb_classes, output_directory,
                       verbose=False, build=True):
     if classifier_name == 'nne':
-        from classifiers import nne
+        from src.inception_time.classifiers import nne
         return nne.Classifier_NNE(output_directory, input_shape,
                                   nb_classes, verbose)
     if classifier_name == 'inception':
-        from classifiers import inception
+        from src.inception_time.classifiers import inception
         return inception.Classifier_INCEPTION(output_directory, input_shape, nb_classes, verbose,
                                               build=build)
 
@@ -101,7 +100,7 @@ if sys.argv[1] == 'InceptionTime':
 
         tmp_output_directory = root_dir + '/results/' + classifier_name + '/' + archive_name + trr + '/'
 
-        for dataset_name in utils.constants.dataset_names_for_archive[archive_name]:
+        for dataset_name in src.utils.constants.dataset_names_for_archive[archive_name]:
             print('\t\t\tdataset_name: ', dataset_name)
 
             x_train, y_train, x_test, y_test, y_true, nb_classes, y_true_train, enc = prepare_data()
@@ -128,7 +127,7 @@ if sys.argv[1] == 'InceptionTime':
 
     tmp_output_directory = root_dir + '/results/' + classifier_name + '/' + archive_name + '/'
 
-    for dataset_name in utils.constants.dataset_names_for_archive[archive_name]:
+    for dataset_name in src.utils.constants.dataset_names_for_archive[archive_name]:
         print('\t\t\tdataset_name: ', dataset_name)
 
         x_train, y_train, x_test, y_test, y_true, nb_classes, y_true_train, enc = prepare_data()
@@ -166,7 +165,7 @@ elif sys.argv[1] == 'InceptionTime_xp':
                     trr = '_itr_' + str(iter)
                 print('\t\titer', iter)
 
-                for dataset_name in utils.constants.dataset_names_for_archive[archive_name]:
+                for dataset_name in src.utils.constants.dataset_names_for_archive[archive_name]:
 
                     output_directory = root_dir + '/results/' + classifier_name + '/' + '/' + xp + '/' + '/' + str(
                         xp_val) + '/' + archive_name + trr + '/' + dataset_name + '/'
@@ -185,7 +184,7 @@ elif sys.argv[1] == 'InceptionTime_xp':
 
                     input_shape = x_train.shape[1:]
 
-                    from classifiers import inception
+                    from src.inception_time.classifiers import inception
 
                     classifier = inception.Classifier_INCEPTION(output_directory, input_shape, nb_classes,
                                                                 verbose=False, build=True, **kwargs)
@@ -211,12 +210,12 @@ elif sys.argv[1] == 'InceptionTime_xp':
 
             clf_name = 'inception/' + xp + '/' + str(xp_val)
 
-            for dataset_name in utils.constants.dataset_names_for_archive[archive_name]:
+            for dataset_name in src.utils.constants.dataset_names_for_archive[archive_name]:
                 x_train, y_train, x_test, y_test, y_true, nb_classes, y_true_train, enc = prepare_data()
 
                 output_directory = tmp_output_directory + dataset_name + '/'
 
-                from classifiers import nne
+                from src.inception_time.classifiers import nne
 
                 classifier = nne.Classifier_NNE(output_directory, x_train.shape[1:],
                                                 nb_classes, clf_name=clf_name)

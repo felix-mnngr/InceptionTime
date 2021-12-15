@@ -3,9 +3,9 @@ from tensorflow import keras
 import numpy as np
 import time
 
-from utils.utils import save_logs
-from utils.utils import calculate_metrics
-from utils.utils import save_test_duration
+from ..utils import save_logs
+from ..utils import calculate_metrics
+from ..utils import save_test_duration
 
 
 class Classifier_INCEPTION:

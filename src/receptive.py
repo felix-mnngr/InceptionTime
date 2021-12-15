@@ -2,7 +2,7 @@ import numpy as np
 import sklearn
 import pandas as pd
 import sys
-from classifiers.inception import Classifier_INCEPTION
+from src.inception_time.classifiers.inception import Classifier_INCEPTION
 import subprocess
 import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
@@ -11,11 +11,11 @@ config = tf.ConfigProto()
 config.gpu_options.per_process_gpu_memory_fraction = 0.2
 set_session(tf.Session(config=config))
 
-from utils.utils import transform_labels
-from utils.utils import create_synthetic_dataset
-from utils.utils import create_directory
-from utils.utils import check_if_file_exits
-from utils.utils import generate_array_of_colors
+from src.inception_time.utils import transform_labels
+from src.inception_time.utils import create_synthetic_dataset
+from src.inception_time.utils import create_directory
+from src.inception_time.utils import check_if_file_exits
+from src.inception_time.utils import generate_array_of_colors
 
 import matplotlib
 

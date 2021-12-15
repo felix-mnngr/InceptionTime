@@ -14,8 +14,8 @@ import os
 import operator
 import utils
 
-from utils.constants import UNIVARIATE_DATASET_NAMES as DATASET_NAMES
-from utils.constants import UNIVARIATE_ARCHIVE_NAMES  as ARCHIVE_NAMES
+from .constants import UNIVARIATE_DATASET_NAMES as DATASET_NAMES
+from .constants import UNIVARIATE_ARCHIVE_NAMES  as ARCHIVE_NAMES
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
