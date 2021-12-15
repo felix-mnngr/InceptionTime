@@ -12,10 +12,10 @@ matplotlib.rcParams['font.sans-serif'] = 'Arial'
 
 import os
 import operator
-import utils
 
 from .constants import UNIVARIATE_DATASET_NAMES as DATASET_NAMES
-from .constants import UNIVARIATE_ARCHIVE_NAMES  as ARCHIVE_NAMES
+from .constants import UNIVARIATE_ARCHIVE_NAMES as ARCHIVE_NAMES
+from .constants import dataset_names_for_archive
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
@@ -89,7 +89,7 @@ def read_all_datasets(root_dir, archive_name):
 
     elif archive_name == 'InlineSkateXPs':
 
-        for dataset_name in utils.constants.dataset_names_for_archive[archive_name]:
+        for dataset_name in dataset_names_for_archive[archive_name]:
             root_dir_dataset = root_dir + '/archives/' + archive_name + '/' + dataset_name + '/'
 
             x_train = np.load(root_dir_dataset + 'x_train.npy')
